@@ -62,6 +62,54 @@ var __privateSet = (obj, member, value, setter) => {
   return value;
 };
 var _map;
+function afterUpdate() {
+}
+const Root = (0, import_index_756e41cf.c)(($$result, $$props, $$bindings, slots) => {
+  let { stores } = $$props;
+  let { page } = $$props;
+  let { components } = $$props;
+  let { props_0 = null } = $$props;
+  let { props_1 = null } = $$props;
+  let { props_2 = null } = $$props;
+  let { props_3 = null } = $$props;
+  (0, import_index_756e41cf.s)("__svelte__", stores);
+  afterUpdate(stores.page.notify);
+  if ($$props.stores === void 0 && $$bindings.stores && stores !== void 0)
+    $$bindings.stores(stores);
+  if ($$props.page === void 0 && $$bindings.page && page !== void 0)
+    $$bindings.page(page);
+  if ($$props.components === void 0 && $$bindings.components && components !== void 0)
+    $$bindings.components(components);
+  if ($$props.props_0 === void 0 && $$bindings.props_0 && props_0 !== void 0)
+    $$bindings.props_0(props_0);
+  if ($$props.props_1 === void 0 && $$bindings.props_1 && props_1 !== void 0)
+    $$bindings.props_1(props_1);
+  if ($$props.props_2 === void 0 && $$bindings.props_2 && props_2 !== void 0)
+    $$bindings.props_2(props_2);
+  if ($$props.props_3 === void 0 && $$bindings.props_3 && props_3 !== void 0)
+    $$bindings.props_3(props_3);
+  {
+    stores.page.set(page);
+  }
+  return `
+
+
+${components[1] ? `${(0, import_index_756e41cf.v)(components[0] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {
+    default: () => {
+      return `${components[2] ? `${(0, import_index_756e41cf.v)(components[1] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {
+        default: () => {
+          return `${components[3] ? `${(0, import_index_756e41cf.v)(components[2] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {
+            default: () => {
+              return `${(0, import_index_756e41cf.v)(components[3] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_3 || {}), {}, {})}`;
+            }
+          })}` : `${(0, import_index_756e41cf.v)(components[2] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {})}`}`;
+        }
+      })}` : `${(0, import_index_756e41cf.v)(components[1] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {})}`}`;
+    }
+  })}` : `${(0, import_index_756e41cf.v)(components[0] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {})}`}
+
+${``}`;
+});
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -582,7 +630,7 @@ ${rendered.css.code}</style>`;
 	<style${options.dev ? " data-svelte" : ""}>${inlined_style}</style>`;
     }
     head += Array.from(css).map((dep) => `
-	<link${styles.has(dep) ? " disabled" : ""} rel="stylesheet" href="${options.prefix + dep}">`).join("");
+	<link${styles.has(dep) ? ' disabled media="(max-width: 0)"' : ""} rel="stylesheet" href="${options.prefix + dep}">`).join("");
     if (page_config.router || page_config.hydrate) {
       head += Array.from(js).map((dep) => `
 	<link rel="modulepreload" href="${options.prefix + dep}">`).join("");
@@ -1377,14 +1425,19 @@ async function respond(incoming, options, state = {}) {
             ssr: false
           });
         }
-        const decoded = decodeURI(request2.url.pathname).replace(options.paths.base, "");
+        let decoded = decodeURI(request2.url.pathname);
+        if (options.paths.base) {
+          if (!decoded.startsWith(options.paths.base))
+            return;
+          decoded = decoded.slice(options.paths.base.length) || "/";
+        }
         for (const route of options.manifest._.routes) {
           const match = route.pattern.exec(decoded);
           if (!match)
             continue;
           const response = route.type === "endpoint" ? await render_endpoint(request2, route, match) : await render_page(request2, route, match, options, state, ssr);
           if (response) {
-            if (response.status === 200) {
+            if (response.status === 200 && !response.headers.etag) {
               const cache_control = get_single_valued_header(response.headers, "cache-control");
               if (!cache_control || !/(no-store|immutable)/.test(cache_control)) {
                 let if_none_match_value = request2.headers["if-none-match"];
@@ -1454,54 +1507,6 @@ async function respond(incoming, options, state = {}) {
     }
   }
 }
-function afterUpdate() {
-}
-const Root = (0, import_index_756e41cf.c)(($$result, $$props, $$bindings, slots) => {
-  let { stores } = $$props;
-  let { page } = $$props;
-  let { components } = $$props;
-  let { props_0 = null } = $$props;
-  let { props_1 = null } = $$props;
-  let { props_2 = null } = $$props;
-  let { props_3 = null } = $$props;
-  (0, import_index_756e41cf.s)("__svelte__", stores);
-  afterUpdate(stores.page.notify);
-  if ($$props.stores === void 0 && $$bindings.stores && stores !== void 0)
-    $$bindings.stores(stores);
-  if ($$props.page === void 0 && $$bindings.page && page !== void 0)
-    $$bindings.page(page);
-  if ($$props.components === void 0 && $$bindings.components && components !== void 0)
-    $$bindings.components(components);
-  if ($$props.props_0 === void 0 && $$bindings.props_0 && props_0 !== void 0)
-    $$bindings.props_0(props_0);
-  if ($$props.props_1 === void 0 && $$bindings.props_1 && props_1 !== void 0)
-    $$bindings.props_1(props_1);
-  if ($$props.props_2 === void 0 && $$bindings.props_2 && props_2 !== void 0)
-    $$bindings.props_2(props_2);
-  if ($$props.props_3 === void 0 && $$bindings.props_3 && props_3 !== void 0)
-    $$bindings.props_3(props_3);
-  {
-    stores.page.set(page);
-  }
-  return `
-
-
-${components[1] ? `${(0, import_index_756e41cf.v)(components[0] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {
-    default: () => {
-      return `${components[2] ? `${(0, import_index_756e41cf.v)(components[1] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {
-        default: () => {
-          return `${components[3] ? `${(0, import_index_756e41cf.v)(components[2] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {
-            default: () => {
-              return `${(0, import_index_756e41cf.v)(components[3] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_3 || {}), {}, {})}`;
-            }
-          })}` : `${(0, import_index_756e41cf.v)(components[2] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_2 || {}), {}, {})}`}`;
-        }
-      })}` : `${(0, import_index_756e41cf.v)(components[1] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_1 || {}), {}, {})}`}`;
-    }
-  })}` : `${(0, import_index_756e41cf.v)(components[0] || import_index_756e41cf.m, "svelte:component").$$render($$result, Object.assign(props_0 || {}), {}, {})}`}
-
-${``}`;
-});
 let base = "";
 let assets = "";
 function set_paths(paths) {

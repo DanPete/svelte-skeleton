@@ -29,7 +29,7 @@ const manifest = {
   assets: new Set(["favicon.png"]),
   _: {
     mime: { ".png": "image/png" },
-    entry: { "file": "start-097528bf.js", "js": ["start-097528bf.js", "chunks/vendor-57a2be19.js", "chunks/preload-helper-ec9aa979.js"], "css": [] },
+    entry: { "file": "start-420c904b.js", "js": ["start-420c904b.js", "chunks/vendor-57a2be19.js", "chunks/preload-helper-ec9aa979.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => __toModule(require("./nodes/0.js"))),
       () => Promise.resolve().then(() => __toModule(require("./nodes/1.js"))),
