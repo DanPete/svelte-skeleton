@@ -1519,7 +1519,7 @@ var user_hooks = /* @__PURE__ */ Object.freeze({
   __proto__: null,
   [Symbol.toStringTag]: "Module"
 });
-const template = ({ head, body, assets: assets2 }) => '<!DOCTYPE html>\n<html lang="en" class="h-full">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body class="h-full">\n		<div id="svelte" class="h-full">' + body + "</div>\n	</body>\n</html>\n";
+const template = ({ head, body, assets: assets2 }) => '<!DOCTYPE html>\n<html lang="en" class="h-full">\n	<head>\n		<meta charset="utf-8" />\n		<meta name="description" content="" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body class="h-full">\n		<div id="svelte" class="h-full">' + body + "</div>\n	</body>\n</html>\n";
 let read = null;
 set_paths({ "base": "", "assets": "" });
 const get_hooks = (hooks) => ({
