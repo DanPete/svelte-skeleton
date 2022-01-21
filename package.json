@@ -15,6 +15,7 @@
 		"@sveltejs/adapter-auto": "^1.0.0-next.14",
 		"@sveltejs/adapter-cloudflare": "^1.0.0-next.8",
 		"@sveltejs/adapter-netlify": "^1.0.0-next.42",
+		"@sveltejs/adapter-node": "^1.0.0-next.66",
 		"@sveltejs/adapter-static": "^1.0.0-next.26",
 		"@sveltejs/adapter-vercel": "^1.0.0-next.39",
 		"@sveltejs/kit": "^1.0.0-next.236",
